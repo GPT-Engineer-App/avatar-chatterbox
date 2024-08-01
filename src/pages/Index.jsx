@@ -1,12 +1,22 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from 'react';
+import AvatarInterviewer from '../components/AvatarInterviewer';
 
 const Index = () => {
+  const [interviewStarted, setInterviewStarted] = useState(false);
+
   return (
-    <div className="flex justify-center items-center">
-      <div className="text-center">
-        <h1 className="text-3xl">Your Blank Canvas</h1>
-        <p>Chat with the agent to start making edits.</p>
-      </div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <h1 className="text-4xl font-bold mb-8">AI Avatar Interviewer</h1>
+      {!interviewStarted ? (
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={() => setInterviewStarted(true)}
+        >
+          Start Interview
+        </button>
+      ) : (
+        <AvatarInterviewer />
+      )}
     </div>
   );
 };
